@@ -1,1 +1,1 @@
-# QR code generator and scanner created with React
+https://kzh-qr.netlify.app/
