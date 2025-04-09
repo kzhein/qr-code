@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import QRCode from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react';
 
 const Generate = () => {
   const [value, setValue] = useState('');
@@ -20,7 +20,7 @@ const Generate = () => {
         onChange={e => setValue(e.target.value)}
         style={{ marginBottom: '20px', padding: '8px' }}
       />
-      <QRCode value={value} size={200} />
+      <QRCodeSVG value={value} size={200} />
     </div>
   );
 };

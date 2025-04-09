@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import QrReader from 'react-qr-reader';
 
-const Scan = () => {
+const ScanFromCamera = () => {
   const [scan, setScan] = useState(false);
   const [value, setValue] = useState(null);
 
@@ -68,4 +68,4 @@ const Scan = () => {
   );
 };
 
-export default Scan;
+export default ScanFromCamera;
