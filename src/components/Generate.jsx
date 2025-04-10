@@ -1,26 +1,24 @@
-import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
+import { useState } from 'react';
 
 const Generate = () => {
   const [value, setValue] = useState('');
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
-      <h1>Create QR code</h1>
+    <div className='space-y-4'>
       <input
         type='text'
-        placeholder='Enter your data'
         value={value}
         onChange={e => setValue(e.target.value)}
-        style={{ marginBottom: '20px', padding: '8px' }}
+        placeholder='Enter text to generate QR code'
+        className='w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
       />
-      <QRCodeSVG value={value} size={200} />
+
+      {value && (
+        <div className='flex justify-center p-4 bg-gray-50 rounded-lg'>
+          <QRCodeSVG value={value} size={200} />
+        </div>
+      )}
     </div>
   );
 };

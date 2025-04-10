@@ -2,8 +2,7 @@ import { useState } from 'react';
 import QrReader from 'react-qr-reader';
 
 const ScanFromCamera = () => {
-  const [scan, setScan] = useState(false);
-  const [value, setValue] = useState(null);
+  const [scannedResult, setScannedResult] = useState(null);
 
   const handleError = error => {
     console.log(error);
@@ -12,27 +11,21 @@ const ScanFromCamera = () => {
   const handleScan = data => {
     if (data) {
       console.log(data);
-      setValue(data);
-      setScan(false);
+      setScannedResult(data);
     }
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-    >
-      <h1>Read QR code</h1>
-      {value && (
-        <p>
-          Scanned value is:{' '}
-          <span
+    <div className='space-y-4'>
+      <div id='reader' className='w-full'>
+        <QrReader delay={300} onError={handleError} onScan={handleScan} />
+      </div>
+      {scannedResult && (
+        <div className='mt-4 p-4 bg-green-50 text-green-700 rounded-lg'>
+          <p>Scanned Result:</p>
+          <p
+            className='break-all'
             style={{
-              fontWeight: 'bold',
-
               // select text with one tap
               WebkitUserSelect: 'all',
               MozUserSelect: 'all',
@@ -40,29 +33,9 @@ const ScanFromCamera = () => {
               UserSelect: 'all',
             }}
           >
-            {value}
-          </span>
-        </p>
-      )}
-      {scan ? (
-        <>
-          <button onClick={() => setScan(false)}>Stop Scan</button>
-          <QrReader
-            delay={300}
-            onError={handleError}
-            onScan={handleScan}
-            style={{ width: '100%', marginTop: '5px' }}
-          />
-        </>
-      ) : (
-        <button
-          onClick={() => {
-            setValue(null);
-            setScan(true);
-          }}
-        >
-          Start Scan
-        </button>
+            {scannedResult}
+          </p>
+        </div>
       )}
     </div>
   );
