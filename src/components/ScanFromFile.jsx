@@ -46,7 +46,7 @@ const ScanFromFile = () => {
       {!selectedFile ? (
         <div
           onClick={() => {
-            fileInputRef.current?.click();
+            fileInputRef.current.click();
           }}
           className='w-full h-32 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-blue-500 transition-colors duration-200'
         >
