@@ -56,7 +56,7 @@ const ScanFromFile = () => {
           </p>
         </div>
       ) : (
-        <div className='w-full p-6 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl flex items-center justify-between shadow-inner'>
+        <div className='w-full p-6 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl flex items-center justify-between'>
           <div className='flex items-center'>
             <Upload className='w-6 h-6 text-green-500 mr-3' />
             <span className='text-lg text-green-700 font-medium truncate max-w-[200px]'>
@@ -77,13 +77,13 @@ const ScanFromFile = () => {
       )}
 
       {!isScanning && selectedFile && !scannedResult && (
-        <div className='mt-6 p-6 bg-gradient-to-r from-red-100 to-orange-100 rounded-xl shadow-inner text-red-800 font-medium'>
+        <div className='mt-6 p-6 bg-gradient-to-r from-red-100 to-orange-100 rounded-xl text-red-800 font-medium'>
           <p>No QR Code detected</p>
         </div>
       )}
 
       {scannedResult && (
-        <div className='mt-6 p-6 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl shadow-inner text-green-800 font-medium'>
+        <div className='mt-6 p-6 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl text-green-800 font-medium'>
           <p>Scanned Result:</p>
           <p
             className='break-all'

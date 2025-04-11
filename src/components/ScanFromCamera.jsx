@@ -22,7 +22,7 @@ const ScanFromCamera = () => {
       </div>
 
       {scannedResult && (
-        <div className='mt-6 p-6 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl shadow-inner text-blue-800 font-medium'>
+        <div className='mt-6 p-6 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl text-blue-800 font-medium'>
           <p>Scanned Result:</p>
           <p
             className='break-all'

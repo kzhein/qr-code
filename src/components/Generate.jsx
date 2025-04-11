@@ -18,7 +18,7 @@ const Generate = () => {
 
       {value && (
         <div className='space-y-6'>
-          <div className='flex justify-center p-8 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl shadow-inner'>
+          <div className='flex justify-center p-8 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl'>
             <div className='transform hover:scale-105 transition-transform duration-300'>
               <QRCodeCanvas value={value} size={200} ref={qrRef} />
             </div>
