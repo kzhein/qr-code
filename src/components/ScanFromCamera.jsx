@@ -16,12 +16,13 @@ const ScanFromCamera = () => {
   };
 
   return (
-    <div className='space-y-4'>
-      <div id='reader' className='w-full'>
+    <div className='space-y-6'>
+      <div id='reader' className='rounded-xl overflow-hidden shadow-lg'>
         <QrReader delay={300} onError={handleError} onScan={handleScan} />
       </div>
+
       {scannedResult && (
-        <div className='mt-4 p-4 bg-green-50 text-green-700 rounded-lg'>
+        <div className='mt-6 p-6 bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl shadow-inner text-blue-800 font-medium'>
           <p>Scanned Result:</p>
           <p
             className='break-all'

@@ -11,7 +11,7 @@ const ScanFromFile = () => {
   const [isScanning, setIsScanning] = useState(false);
 
   return (
-    <div className='space-y-4'>
+    <div className='space-y-6'>
       <input
         type='file'
         accept='image/*'
@@ -48,18 +48,18 @@ const ScanFromFile = () => {
           onClick={() => {
             fileInputRef.current.click();
           }}
-          className='w-full h-32 border-2 border-dashed border-gray-300 rounded-lg flex flex-col items-center justify-center cursor-pointer hover:border-blue-500 transition-colors duration-200'
+          className='w-full h-40 border-3 border-dashed border-green-300 rounded-xl flex flex-col items-center justify-center cursor-pointer hover:border-green-500 hover:bg-green-50/50 transition-all duration-300 transform hover:scale-105'
         >
-          <Upload className='w-8 h-8 text-gray-400 mb-2' />
-          <p className='text-sm text-gray-500'>
+          <Upload className='w-12 h-12 text-green-400 mb-4' />
+          <p className='text-lg text-green-600 font-medium'>
             Click to upload or drag and drop
           </p>
         </div>
       ) : (
-        <div className='w-full p-4 bg-blue-50 rounded-lg flex items-center justify-between'>
+        <div className='w-full p-6 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl flex items-center justify-between shadow-inner'>
           <div className='flex items-center'>
-            <Upload className='w-5 h-5 text-blue-500 mr-2' />
-            <span className='text-sm text-blue-700 truncate max-w-[200px]'>
+            <Upload className='w-6 h-6 text-green-500 mr-3' />
+            <span className='text-lg text-green-700 font-medium truncate max-w-[200px]'>
               {selectedFile.name}
             </span>
           </div>
@@ -69,21 +69,21 @@ const ScanFromFile = () => {
               setScannedResult(null);
               fileInputRef.current.value = '';
             }}
-            className='p-1 hover:bg-blue-100 rounded-full transition-colors duration-200'
+            className='p-2 hover:bg-green-200/50 rounded-full transition-colors duration-300'
           >
-            <X className='w-4 h-4 text-blue-500' />
+            <X className='w-5 h-5 text-green-500' />
           </button>
         </div>
       )}
 
       {!isScanning && selectedFile && !scannedResult && (
-        <div className='mt-4 p-4 bg-red-50 text-red-700 rounded-lg'>
+        <div className='mt-6 p-6 bg-gradient-to-r from-red-100 to-orange-100 rounded-xl shadow-inner text-red-800 font-medium'>
           <p>No QR Code detected</p>
         </div>
       )}
 
       {scannedResult && (
-        <div className='mt-4 p-4 bg-green-50 text-green-700 rounded-lg'>
+        <div className='mt-6 p-6 bg-gradient-to-r from-green-100 to-emerald-100 rounded-xl shadow-inner text-green-800 font-medium'>
           <p>Scanned Result:</p>
           <p
             className='break-all'

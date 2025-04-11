@@ -7,20 +7,23 @@ const Generate = () => {
   const qrRef = useRef(null);
 
   return (
-    <div className='space-y-4'>
+    <div className='space-y-6'>
       <input
         type='text'
         value={value}
         onChange={e => setValue(e.target.value)}
         placeholder='Enter text to generate QR code'
-        className='w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500'
+        className='w-full px-6 py-4 border-2 border-purple-200 rounded-xl focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 bg-white/50 backdrop-blur-sm'
       />
 
       {value && (
-        <>
-          <div className='flex justify-center p-4'>
-            <QRCodeCanvas value={value} size={200} ref={qrRef} />
+        <div className='space-y-6'>
+          <div className='flex justify-center p-8 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl shadow-inner'>
+            <div className='transform hover:scale-105 transition-transform duration-300'>
+              <QRCodeCanvas value={value} size={200} ref={qrRef} />
+            </div>
           </div>
+
           <button
             onClick={() => {
               const base64image = qrRef.current.toDataURL('image/png', 1.0);
@@ -37,12 +40,12 @@ const Generate = () => {
               document.body.removeChild(fakeLink);
               fakeLink.remove();
             }}
-            className='w-full flex items-center justify-center px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors duration-200'
+            className='w-full flex items-center justify-center px-6 py-4 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-xl hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all duration-300 shadow-lg'
           >
             <Download className='w-5 h-5 mr-2' />
             Download QR Code
           </button>
-        </>
+        </div>
       )}
     </div>
   );
