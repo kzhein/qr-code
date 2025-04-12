@@ -1,8 +1,6 @@
-import { BrowserQRCodeReader } from '@zxing/browser';
+import { Html5Qrcode } from 'html5-qrcode';
 import { Upload, X } from 'lucide-react';
 import { useRef, useState } from 'react';
-
-const codeReader = new BrowserQRCodeReader();
 
 const ScanFromFile = () => {
   const fileInputRef = useRef(null);
@@ -16,8 +14,6 @@ const ScanFromFile = () => {
         type='file'
         accept='image/*'
         onChange={async e => {
-          setIsScanning(true);
-
           const file = e.target.files[0];
 
           if (!file) {
@@ -26,16 +22,15 @@ const ScanFromFile = () => {
             return;
           }
 
+          setIsScanning(true);
           setSelectedFile(file);
 
-          const imageURL = URL.createObjectURL(file);
-
           try {
-            const { text } = await codeReader.decodeFromImageUrl(imageURL);
+            const html5QrCode = new Html5Qrcode('reader');
+            const text = await html5QrCode.scanFile(file, true);
             setScannedResult(text);
           } catch (error) {
           } finally {
-            URL.revokeObjectURL(imageURL);
             setIsScanning(false);
           }
         }}
@@ -75,6 +70,8 @@ const ScanFromFile = () => {
           </button>
         </div>
       )}
+
+      <div id='reader' className='hidden'></div>
 
       {!isScanning && selectedFile && !scannedResult && (
         <div className='mt-6 p-6 bg-gradient-to-r from-red-100 to-orange-100 rounded-xl text-red-800 font-medium'>
